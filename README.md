@@ -75,7 +75,7 @@ Default options are as follows:
 ```yaml
 jsonContent:
   meta: true
-  keywords: false # language name option
+  keywords: false
   dateFormat: undefined # format string
   pages:
     title: true
@@ -87,7 +87,7 @@ jsonContent:
     link: true
     permalink: true
     excerpt: true
-    keywords: true # but only if root keywords option language was set
+    keywords: true
     text: true
     raw: false
     content: false
@@ -101,7 +101,7 @@ jsonContent:
     link: true
     permalink: true
     excerpt: true
-    keywords: true # but only if root keywords option language was set
+    keywords: true
     text: true
     raw: false
     content: false
@@ -120,25 +120,20 @@ If not defined, default format is the `JSON.stringify` result for `Date` objects
 
 ### Keywords
 
-`keywords` options extracts keywords from excerpt using [michaeldelorenzo/keyword-extractor](https://github.com/michaeldelorenzo/keyword-extractor), NPM package to create a keywords array from a string by removing stopwords.
+When you create a new post, you can set keywords like this:
 
-If **keyword-extractor** don't supports your language, don't worry! It's disabled by default.
-
-You can exclude meta, pages or posts contents from `content.json` by setting `meta`, `pages`, or `posts` to `false`.
-
-To exclude individual fields from `pages` or `posts` output set their config values to `false`.
-
-To exclude specific paths, use an `ignore` list. Any path that contains at least one of the listed substrings will be skipped from indexing. For example:
-
-```yaml
-jsonContent:
-  ignore:
-    - path/to/a/page
-    - url/to/one/post
-    - an-entire-category
-    - specific.file
-    - .ext # a file extension
+```markdown
+---
+title: your post title
+date: create date
+categories: categories
+tags: tags
+keywords: [one, two, three]
+---
+content...
 ```
+
+`keywords` option sets true will output the post or page keywords value.
 
 ## Output
 

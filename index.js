@@ -56,13 +56,8 @@ let cfg = hexo.config.jsonContent || { meta: true },
 		}
 	} : {},
 	ignore = cfg.ignore ? cfg.ignore.map(item => item.toLowerCase()) : [],
-	getKeywords = str => {
-		return keywords.extract(str, {
-			language: cfg.keywords,
-			remove_digits: true,
-			return_changed_case: true,
-			remove_duplicates: true
-		}).join(' ')
+	getKeywords = post => {
+		return post.next && post.next.keywords ? post.next.keywords : '';
 	},
 	setContent = (obj, item, ref) => {
 		switch (item) {
@@ -76,7 +71,7 @@ let cfg = hexo.config.jsonContent || { meta: true },
 
 			case 'keywords':
 				if (cfg.keywords)
-					obj.keywords = getKeywords(minify(ref.excerpt))
+					obj.keywords = getKeywords(ref)
 				break
 
 			case 'categories':
