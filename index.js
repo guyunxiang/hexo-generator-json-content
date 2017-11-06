@@ -57,7 +57,7 @@ let cfg = hexo.config.jsonContent || { meta: true },
 	} : {},
 	ignore = cfg.ignore ? cfg.ignore.map(item => item.toLowerCase()) : [],
 	getKeywords = post => {
-		return post.next && post.next.keywords ? post.next.keywords : '';
+		return post.keywords || '';
 	},
 	setContent = (obj, item, ref) => {
 		switch (item) {
